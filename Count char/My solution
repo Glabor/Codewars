@@ -1,0 +1,7 @@
+def count(string):
+    lett={}
+    for ch in string:
+        i=lett.get(ch,0)
+        i+=1
+        lett[ch]=i
+    return lett
