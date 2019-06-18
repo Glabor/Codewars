@@ -1,0 +1,13 @@
+# my implementation/explanation of the solution by foxxyz
+def snail(array):
+  if array:
+    # force to list because zip returns a list of tuples
+    top_row = list(array[0])
+    # rotate the array by switching remaining rows & columns with zip
+    # the * expands the remaining rows so they can be matched by column
+    rotated_array = zip(*array[1:])
+    # then reverse rows to make the formerly last column the next top row
+    rotated_array = rotated_array[::-1]
+    return top_row + snail(rotated_array)
+  else:
+    return []
