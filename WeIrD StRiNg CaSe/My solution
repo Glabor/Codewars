@@ -1,0 +1,16 @@
+def to_weird_case(string):
+  s=string.split()
+  new_s=''
+  for word in s:
+    even=True
+    new=''
+    for let in word:
+      if even:
+        new+=let.upper()
+        even=False
+      else:
+        new+=let.lower()
+        even=True
+    new_s+=new+' '
+  new_s=new_s[:-1]
+  return new_s
