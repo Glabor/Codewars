@@ -1,0 +1,10 @@
+def is_pangram(s):
+    texte=s.lower()
+    L=[]
+    for i in texte:
+        if ord(i) not in L:
+            L.append(ord(i)) 
+    for i in range(97, 121):
+        if i not in L:
+            return False
+    return True
