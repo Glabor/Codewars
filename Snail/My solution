@@ -1,0 +1,27 @@
+def snail(arr):
+  n = len(arr)
+  L=[]
+  dim = n
+  #replace array
+  while dim>=1 and len(arr[0])>=1:
+    #two rows
+    for i in range(dim):
+      L.append(arr[0][i])
+    for i in range(1,dim):
+      L.append(arr[i][dim-1])
+
+    arr2=[]
+    k=0
+    for i in range(dim-1,0,-1):
+      arr2.append([])
+      for j in range(dim-2,-1,-1):
+        arr2[k].append(arr[i][j])
+      k+=1
+    
+    arr=arr2
+    dim-=1
+    print(arr)
+  return L
+
+sna=[[1,2,3],[4,5,6],[7,8,9]]
+print(snail(sna))
