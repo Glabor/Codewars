@@ -1,0 +1,40 @@
+def next_bigger(n):
+  ans=-1
+  st=str(n)
+  stsep=[int(let) for let in st]
+  L=[]
+  sort=False
+  i=2
+  while not sort and i<=len(stsep):
+
+    if stsep[-i]!=max(stsep[-i:]):
+
+      m_found=False
+      for m in '0123456789':
+        #print(stsep[-i:],m, int(m) in stsep[-i:])
+        if int(m)>stsep[-i] and not m_found and int(m) in stsep[-i:]:
+          new_i=int(m)
+          m_found=True
+      print(new_i)
+
+      a , b = stsep[-i:][stsep[-i:].index(new_i)] , stsep[-i]
+      i_new =-i+stsep[-i:].index(new_i)
+      #print(stsep[-i:].index(max(stsep[-i:])))
+      stsep[i_new],stsep[-i]  = b,a
+      sortlist=[]
+
+      for j in stsep[-i+1:]:
+        sortlist.append(j)
+
+      sortlist.sort()
+      stsep=stsep[:-i+1]+sortlist
+      ans=''
+      sort=True
+
+    i+=1
+  if not sort:
+    return -1
+  for i in stsep:
+    i_str=str(i)
+    ans+=i_str      
+  return int(ans)
