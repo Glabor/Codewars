@@ -8,3 +8,4 @@ def is_pangram(s):
         if i not in L:
             return False
     return True
+ 
