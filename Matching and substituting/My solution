@@ -1,0 +1,27 @@
+import re
+
+def change(s, prog, version):
+  print(s)
+  phoneregex=re.compile(r'\+1-(\d)+-(\d)+-(\d){4}')
+  versregex=re.compile(r'(\d)+\.(\d)+')
+  phone=phoneregex.search(s)
+  vers=versregex.search(s)
+  erroregex=re.compile(r'(\d)+\.(\d)+.(\d)+')
+  error=erroregex.search(s)
+  if error!=None:
+    return 'ERROR: VERSION or PHONE'
+
+  if vers== None:
+    return 'ERROR: VERSION or PHONE'
+  
+  else:
+    print(vers.group())
+
+    if phone==None:
+      return 'ERROR: VERSION or PHONE'
+    else:
+      print('ok')
+      if vers.group()!='2.0':
+        return 'Program: {} Author: g964 Phone: {} Date: 2019-01-01 Version: {}'.format(prog,  '+1-503-555-0090', version)
+      else:
+          return 'Program: {} Author: g964 Phone: {} Date: 2019-01-01 Version: {}'.format(prog,  '+1-503-555-0090', '2.0')
