@@ -1,0 +1,10 @@
+import re
+
+def change(data, new_program, new_version):
+    try:
+        curr_phone = re.search(r'^Phone\: (\+1-\d{3}-\d{3}-\d{4})$', data, re.M).group(1)
+        curr_version = re.search(r'^Version\: (\d+\.\d+)$', data, re.M).group(1)
+    except:
+        return 'ERROR: VERSION or PHONE'
+
+    return 'Program: {} Author: g964 Phone: +1-503-555-0090 Date: 2019-01-01 Version: {}'.format(new_program, new_version if curr_version != '2.0' else curr_version)
