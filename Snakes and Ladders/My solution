@@ -1,0 +1,43 @@
+class SnakesLadders():
+
+    def __init__(self):
+      self.win=False
+      self.pos=[0,0]
+      self.player=0
+      self.snakes=((6,16), (11,49), (19,62), (25,46), (53, 74), (60,64), (68,89), (75,95), (80,99), (88,92))
+      self.ladders=((2,38), (7,14), (8,31), (15,26),(21,42),(28,84),(36,44),(51,67),(71,91),(78,98),(87,94))
+
+    def play(self, die1, die2):
+      if self.win:
+        return 'Game over!'
+
+      double= (die1==die2)
+
+      self.pos[self.player]=self.pos[self.player]+die1+die2
+      pos=self.pos[self.player]
+      if pos>100:
+        print('ok')
+        self.pos[self.player]=100-(pos-100)
+      if pos==100:
+        self.win= True
+        return 'Player {} Wins!'.format(self.player + 1)
+      pos=self.pos[self.player]
+      
+      for i in self.snakes:
+        if pos == i[1]:
+          self.pos[self.player]= i[0]
+      for i in self.ladders:
+        if pos== i[0]:
+          self.pos[self.player]=i[1]
+
+      if not double:
+        if self.player==1:
+          self.player=0
+          return 'Player 2 is on square {}'.format(self.pos[self.player+1])
+        else:
+          self.player=1
+          return 'Player 1 is on square {}'.format(self.pos[self.player-1])
+      else:
+        return 'Player {} is on square {}'.format( self.player + 1,self.pos[self.player])
+
+        
